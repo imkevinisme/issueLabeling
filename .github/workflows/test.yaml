@@ -8,6 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Extract owner and repository name
+        run: |
+          IFS='/' read -r owner repo <<< "${GITHUB_REPOSITORY}"
+          echo "Owner: $owner"
+          echo "Repository: $repo"
+
       - name: Find all issue with "Ready to deploy" label
         uses: lee-dohm/select-matching-issues@v1
         with:
