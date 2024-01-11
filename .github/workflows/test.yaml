@@ -11,10 +11,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          repository: "https://github.com/imkevinisme/version-action/issues/1"
+          repository: "https://github.com/imkevinisme/version-action/issues"
 
       - name: Removing and adding label = "Deployed with version"
-        if: github.event.label.name == "Ready to deploy"
+        if: github.event.label.name == 'Ready to deploy'
         uses: actions/github-script@v6
         with:
           script: |
