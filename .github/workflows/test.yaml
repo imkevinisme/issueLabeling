@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          repository: "imkevinisme/version-action/issues"
+          repository: "imkevinisme/version-action"
 
       - name: Removing and adding label = "Deployed with version"
         if: github.event.label.name == 'Ready to deploy'
