@@ -14,7 +14,7 @@ jobs:
           query: label:documentation'
           token: ${{github.token}}
       - name: Listing out all the repo issue
-        run: cat ${{github.repository}}
+        run: cat ${{steps.bugs.outputs.path}}
 
       #       })
       # - name: Removing and adding label = "Deployed with version"
