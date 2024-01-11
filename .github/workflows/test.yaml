@@ -6,15 +6,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
+    env: ${{github.repository}} = 'imkevinisme/version-action'
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Find all issue with "Ready to deploy" label
+        uses: lee-dohm/select-matching-issues@v1
         with:
-          repository: "imkevinisme/version-action"
+          query: "label:"
+          token: ${{github.token}}
+      - name: Listing out all the repo issue
+        run: cat ${{github.repository}}
 
+      #       })
       # - name: Removing and adding label = "Deployed with version"
       #   if: github.event.label.name == 'Ready to deploy'
       #   uses: actions/github-script@v6
@@ -22,14 +25,3 @@ jobs:
       #     script: |
       #       github.rest.issues.removeLabel({
       #         name: "Ready to deloy"
-      #       })
-
-      - name: Adding label
-        run: |
-          echo ${{github.repository}}
-          gh issue edit "$NUMBER" --add-label "$LABELS"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          NUMBER: 1
-          LABELS: Deployed
