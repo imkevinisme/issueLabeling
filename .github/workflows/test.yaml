@@ -12,6 +12,8 @@ jobs:
         id: deploy
         uses: lee-dohm/select-matching-issues@v1
         with:
+          path: imkevinisme/version-action
+          format: list
           query: label:documentation
           token: ${{github.token}}
 
