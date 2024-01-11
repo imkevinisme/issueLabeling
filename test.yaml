@@ -1,0 +1,22 @@
+name: Issue removing and labeling
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          repository: "https://github.com/imkevinisme/version-action/issues"
+
+      - name: Removing and adding label = "Deployed with v${{}}"
+        uses: actions/github-script@v6
+        with:
+          script: |
+          if: github.rest.issues.removeLabel({
+
+            })
