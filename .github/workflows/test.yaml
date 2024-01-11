@@ -24,10 +24,10 @@ jobs:
       #         name: "Ready to deloy"
       #       })
 
-      - name: adding
-        run: gh issue edit "$NUMBER" --add-label "$LABELS"
+      - name: Adding label
+        run: gh pr issue edit "$NUMBER" --add-label "$LABELS"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
-          NUMBER: ${{ github.event.issue.number }}
+          NUMBER: 1
           LABELS: Deployed
