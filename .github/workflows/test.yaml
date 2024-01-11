@@ -26,7 +26,7 @@ jobs:
 
       - name: Adding label
         run: |
-          gh pr checkout 1
+          echo ${{github.repository}}
           gh issue edit "$NUMBER" --add-label "$LABELS"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
