@@ -13,11 +13,14 @@ jobs:
         with:
           repository: "imkevinisme/version-action"
 
-      - name: Removing and adding label = "Deployed with version"
-        if: github.event.label.name == 'Ready to deploy'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.removeLabel({
-              name: "Ready to deloy"
-            })
+      # - name: Removing and adding label = "Deployed with version"
+      #   if: github.event.label.name == 'Ready to deploy'
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       github.rest.issues.removeLabel({
+      #         name: "Ready to deloy"
+      #       })
+
+      - name: adding
+        run: gh issue edit "1" --add-label "Deployed"
