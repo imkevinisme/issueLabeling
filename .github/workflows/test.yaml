@@ -25,7 +25,9 @@ jobs:
       #       })
 
       - name: adding
-        run: gh issue edit "1" --add-label "Deployed"
+        run: gh issue edit "$NUMBER" --add-label "$LABELS"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: Deployed
