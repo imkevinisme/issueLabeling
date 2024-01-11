@@ -1,4 +1,4 @@
-name: Issue removing and labeling
+name: Issue label removing and adding
 
 on:
   push:
@@ -14,9 +14,10 @@ jobs:
           repository: "https://github.com/imkevinisme/version-action/issues"
 
       - name: Removing and adding label = "Deployed with v${{}}"
+        if: github.event.label.name == "Ready to deploy"
         uses: actions/github-script@v6
         with:
           script: |
-          if: github.rest.issues.removeLabel({
-
+            github.rest.issues.removeLabel({
+              name: "Ready to deloy"
             })
