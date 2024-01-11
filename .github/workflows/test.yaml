@@ -11,8 +11,8 @@ jobs:
       - name: Find all issue with "Ready to deploy" label
         uses: lee-dohm/select-matching-issues@v1
         with:
+          query: label:documentation'
           token: ${{github.token}}
-          repository: imkevinisme/version-action
       - name: Listing out all the repo issue
         run: cat ${{github.repository}}
 
