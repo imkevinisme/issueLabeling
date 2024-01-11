@@ -14,7 +14,7 @@ jobs:
           repository: "https://github.com/imkevinisme/version-action/issues"
 
       - name: Removing and adding label = "Deployed with version"
-        if: github.event.label.name == "Ready to deploy"
+        if: github.event.label.name == "<Ready to deploy>"
         uses: actions/github-script@v6
         with:
           script: |
